@@ -65,3 +65,16 @@ yc compute instance create \
 E: The method driver /usr/lib/apt/methods/https could not be found" при выполнении apt update
 Для устранения ошибки в скрипт install_mongodb.sh внесена строка для установки необходимых сертификатов:
 sudo apt -y install apt-transport-https ca-certificates
+
+7. Сборка образов VM при помощи Packer
+
+Создан шаблон ubuntu16.json для настройки хоста с предустановленными MongoDB И Ruby.
+Поведена параметризация шаблона ubuntu16.json переменными yc_folder_id, yc_sa_key_file, yc_subnet_id.
+Внесены дополнительные опции указатель зоны и объем диска.
+
+Build 'yandex' finished after 4 minutes 1 second.
+
+==> Wait completed after 4 minutes 1 second
+
+==> Builds finished. The artifacts of successful builds are:
+--> yandex: A disk image was created: reddit-base-1661007050 (id: fd8n9rbc8fsv1e0g37jm) with family name reddit-base
