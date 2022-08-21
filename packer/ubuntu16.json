@@ -22,12 +22,6 @@
 ],
     "provisioners": [
       {
-			"type": "shell",
-			"inline": [
-				"cloud-init status --wait"
-			]
-		},
-      {
         "type": "shell",
         "script": "scripts/install_mongodb.sh",
         "execute_command": "sudo {{.Path}}"
