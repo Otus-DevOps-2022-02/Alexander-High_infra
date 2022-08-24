@@ -37,3 +37,31 @@ someinternalhost_IP = 10.128.0.31
 Через WEB-интервейс pritunl в разделе settings в поле Let's Encrypt необходимо вставить строку вида:
 
 51.250.9.173.sslip.io
+
+6. Практика управления ресурсами Yandex.Cloud через yc
+
+Данные для подключения:
+testapp_IP = 51.250.75.173
+testapp_port = 9292
+
+Код запуска инстанса:
+yc compute instance create \
+	--name reddit-app \
+	--hostname reddit-app \
+	--memory=4 \
+	--create-boot-disk image-folder-id=standard-images,image-family=ubuntu-1604-lts,size=10GB \
+	--network-interface subnet-name=default-ru-central1-a,nat-ip-version=ipv4 \
+	--metadata serial-port-enable=0 \
+	--metadata-from-file user-data=./metadata.yaml
+
+Установка Ruby, Bundler, MongoDB и Git (необходим для загрузки кода приложения) прописана в metadata.yaml
+Выполнение всех шагов знаменуется выводом в порт сообщения "All Right Man !!!"
+[   89.816122] cloud-init[743]: Cloud-init v. 21.1-19-gbad84ad4-0ubuntu1~16.04.2 running 'modules:final' at Sat, 13 Aug 2022 18:24:48 +0000. Up 9.09 seconds.
+[   89.816620] cloud-init[743]: All Right Man !!!
+
+*вариативно все команды можно было собрать в один исполняемый скрипт .sh (х) и прописать в metadata вызов это скрипта через bash.
+
+**При запуске апвтоматических тестов выявлена ошибка в отсутствии на тестовом образе информации и сертификатов для работы с протоколом https:
+E: The method driver /usr/lib/apt/methods/https could not be found" при выполнении apt update
+Для устранения ошибки в скрипт install_mongodb.sh внесена строка для установки необходимых сертификатов:
+sudo apt -y install apt-transport-https ca-certificates
