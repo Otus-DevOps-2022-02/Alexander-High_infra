@@ -1,5 +1,5 @@
 {
-   "builders": [
+    "builders": [
       {
         "type": "yandex",
         "service_account_key_file": "{{user `key_file`}}",

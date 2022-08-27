@@ -78,3 +78,19 @@ Build 'yandex' finished after 4 minutes 1 second.
 
 ==> Builds finished. The artifacts of successful builds are:
 --> yandex: A disk image was created: reddit-base-1661007050 (id: fd8n9rbc8fsv1e0g37jm) with family name reddit-base
+
+8. Декларативное описание в виде кода инфраструктуры YC, требуемой для запуска тестового приложения, при помощи Terraform.
+
+input переменная для приватного ключа, использующегося в определении подключения для провижинеров (connection):
+variable "public_key_path"
+
+Определите input переменную для задания зоны в ресурсе "yandex_compute_instance" "app". У нее должно быть значение по умолчанию:
+variable "zone"
+default = "ru-central1-a"
+
+Отформатированы все конфигурационные файлы используя команду terraform fmt (с ключами -check -diff)
+➜  terraform git:(terraform-1) ✗ terraform fmt
+main.tf
+outputs.tf
+terraform.tfvars
+variables.tf
