@@ -1,7 +1,7 @@
 cloud_id                 = "b1g3biuohft9hraklifp"
 folder_id                = "b1g0p58c0433ru66qs9l"
 zone                     = "ru-central1-a"
-image_id                 = "fd8n9rbc8fsv1e0g37jm"
+image_id                 = "fd83vlr2sms0gb7rpfas"
 public_key_path          = "~/.ssh/appuser.pub"
 subnet_id                = "e9b3r8b7tn2h3kc7kgt6"
 service_account_key_file = "key.json"
