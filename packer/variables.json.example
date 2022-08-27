@@ -1,5 +1,5 @@
 {
-	"yc_folder_id": "b1g0p***********6qs9l",
-	"yc_sa_key_file": "key.json",
-	"yc_subnet_id": "e9b3r8***********kgt6"
+	"folder_id": "b1g0p***********6qs9l",
+	"key_file": "key.json.example",
+	"subnet_id": "e9b3r8***********kgt6"
 }
